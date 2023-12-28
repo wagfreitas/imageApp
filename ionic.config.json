@@ -1,0 +1,7 @@
+{
+  "name": "mobileImagem",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}

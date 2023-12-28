@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "sistatend-ae6a9": {
+      "hosting": {
+        "app": [
+          "sistatend-ae6a9"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "sistatend-ae6a9"
+  }
+}

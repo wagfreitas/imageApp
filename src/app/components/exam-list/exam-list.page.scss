@@ -1,0 +1,28 @@
+.grid-container {
+  display: grid;
+  margin: 20px;
+  display: grid;
+  grid-gap: 5px;
+  background-color: #7db7e9;
+  border-collapse: separate;
+  border-spacing: 0px 5px;
+
+
+}
+
+.grid-container > div {
+  background-color: white;
+  padding: 20px;
+  text-align: center;
+  font-size: 30px;
+}
+
+.wrapping-list .item-content,
+.wrapping-list .item {
+  overflow: initial;
+  white-space: initial;
+}
+
+.my-label {
+  font-size: 4em;
+}

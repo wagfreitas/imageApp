@@ -1,0 +1,52 @@
+<ion-content class="bg-image login-content getsstart ion-padding">
+
+
+
+  <div id= "container">
+    <div >
+              <img src="../../../../assets/images/logoLogin.png" alt="5 Terre">
+
+      </div>
+      <form [formGroup]="loginForm" (ngSubmit)="doLogin(loginForm.value)">
+          <ion-list class="inputs-list" lines="full">
+              <ion-item class="input-item">
+                  <ion-input type="email" placeholder="Email" formControlName="email" clearInput autocapitalize="off" inputmode="email"></ion-input>
+              </ion-item>
+              <div class="error-container">
+                  <ng-container >
+                      <div class="error-message">
+                          <ion-icon name="information-circle-outline"></ion-icon>
+
+                      </div>
+                  </ng-container>
+              </div>
+
+              <ion-item class="input-item">
+                  <app-show-hide-password>
+                      <ion-input type="password" placeholder="Password" formControlName="password"></ion-input>
+                  </app-show-hide-password>
+              </ion-item>
+              <div class="error-container">
+                  <ng-container >
+                      <div class="error-message" >
+                          <ion-icon name="information-circle-outline"></ion-icon>
+
+                      </div>
+                  </ng-container>
+              </div>
+          </ion-list>
+
+         <ion-button class="login-btn" type ="submit" expand="block" [disabled]="!loginForm.valid">Entrar</ion-button>
+          <ion-row class="other-auth-options-row">
+
+
+
+              <div id="container">
+                  <p>{{errorMessage}}</p>
+              </div>
+          </ion-row>
+      </form>
+
+  </div>
+  </ion-content>
+

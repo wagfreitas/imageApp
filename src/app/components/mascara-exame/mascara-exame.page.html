@@ -1,0 +1,133 @@
+<ion-header [translucent]="true">
+  <ion-toolbar color="primary">
+    <ion-title>Mascara de Laudos</ion-title>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-grid class="grid-container">
+    <ion-row class="ion-row1 ion-justify-content-start ion-align-items-center">
+      <ion-col size="8">
+        <h3>Dados do Cliente</h3>
+      </ion-col>
+    </ion-row>
+
+    <ion-row class="ion-row1 ion-justify-content-start ion-align-items-center">
+      <ion-col size="4">
+        <b>Nome/idade:</b>
+      </ion-col>
+      <ion-col size="8">
+        {{exames.firstName}} - {{exames.idade.anos}}A, {{exames.idade.meses}}M, {{exames.idade.dias}}D
+      </ion-col>
+    </ion-row>
+
+    <ion-row class="ion-row1  ion-justify-content-start ion-align-items-center">
+      <ion-col size="4">
+        <b>Exames: </b>
+      </ion-col>
+      <ion-col>
+        <ion-select (ionChange)="buscaMascara()" [(ngModel)]="exameSel" placeholder="Selecione o Exame">
+          <ion-select-option [value]="tipoexame.id" *ngFor="let tipoexame of tipoExames" class="img-wrapper">
+            {{ tipoexame.id}}
+          </ion-select-option>
+        </ion-select>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+
+
+  <div [ngSwitch]="exameSel">
+    <div *ngFor="let tipoexame of tipoExames">
+      <ion-list *ngSwitchCase="tipoexame.id">
+        <ion-item>
+          <ion-grid>
+            <ion-row class="ion-row1">
+              <ion-label>Posição do Exame</ion-label>
+            </ion-row>
+            <ion-row class="ion-row2">
+              <ion-col sizeLg="4" sizeMd="2" sizeXs="4" *ngFor="let posicao of posicaoExame; let i = index">
+                <ion-button (click)="choosePosicaoExame(posicao, i )" class="img-wrapper" color="{{posicao.btncolor}}">
+                  {{posicao.exames}}
+                </ion-button>
+              </ion-col>
+            </ion-row>
+          </ion-grid>
+        </ion-item>
+
+        <ion-item>
+          <ion-grid>
+            <ion-row class="ion-row1">
+              <ion-label>Exame sem Alteração</ion-label>
+            </ion-row>
+            <ion-row class="ion-row2">
+              <ion-col sizeLg="12" sizeMd="12" sizeXs="12">
+                <ion-button (click)="chooseAnalisenorm()" class="img-wrapper" color="{{btnColor}}">
+                  NORMAL
+                </ion-button>
+              </ion-col>
+            </ion-row>
+          </ion-grid>
+        </ion-item>
+
+        <ion-item *ngIf="laudosAlterados.length > 0">
+          <ion-grid>
+            <ion-row class="ion-row1"> <ion-label>Exame com Alteração</ion-label></ion-row>
+            <ion-row class="ion-row2">
+              <ion-col sizeLg="4" sizeMd="2" sizeXs="4" *ngFor="let laudoAlterado of laudosAlterados; let i = index">
+                <ion-button disabled={{btnNormal}} color={{laudoAlterado.btncolor}} class="img-wrapper"
+                  (click)="chooseLaudoAlterado(laudoAlterado, i )">
+                  {{laudoAlterado.laudos}}
+                </ion-button>
+              </ion-col>
+            </ion-row>
+          </ion-grid>
+        </ion-item>
+
+        <ion-item *ngIf="analisemins.length > 0">
+          <ion-item-divider>
+            <ion-grid>
+              <ion-row>
+                <ion-col class="img-wrapper" sizeLg="12" sizeMd="12" sizeXs="12"
+                  *ngFor="let analisemin of analisemins, let i = index">
+                  <ion-button disabled={{btnNormal}} color={{analisemin.btncolor}} class="img-wrapper"
+                    (click)="chooseAnalisemin(analisemin, i )">
+                    {{analisemin.laudosmin}}
+                  </ion-button>
+
+                </ion-col>
+              </ion-row>
+            </ion-grid>
+          </ion-item-divider>
+        </ion-item>
+
+        <ion-item>
+          <ion-item-divider>
+            <ion-grid>
+              <ion-row>
+                <ion-col class="img-wrapper" sizeLg="12" sizeMd="12" sizeXs="12">
+                  <ion-item>
+                    <ion-label floating>Obs:</ion-label>
+                    <ion-textarea [(ngModel)]="laudosObs"
+                      placeholder="acrescente alguma informação"></ion-textarea>
+                  </ion-item>
+
+                </ion-col>
+              </ion-row>
+            </ion-grid>
+          </ion-item-divider>
+        </ion-item>
+      </ion-list>
+    </div>
+
+  </div>
+
+  <div *ngIf="exameSel">
+    <ion-button color="primary" (click)="createLaudo()">
+      Cadastrar </ion-button>
+  </div>
+
+</ion-content>

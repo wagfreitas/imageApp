@@ -1,0 +1,36 @@
+<ion-header [translucent]="true">
+  <ion-toolbar color= "primary">
+   <ion-title>Exames Laudados </ion-title>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+  <div class="grid-container">
+
+    <ion-item-sliding  *ngFor="let item of exames">
+
+       <ion-item >
+        <ion-label  class="ion-text-wrap">
+          <h1>{{item.nome}}</h1>
+        </ion-label>
+        <ion-label >
+          <h3>Idade: {{item.idade}}</h3>
+          <h4 >Exames: {{item.tipoExame}}</h4>
+          <h4>Local: {{item.local}}</h4>
+        </ion-label>
+
+      </ion-item>
+
+      <ion-item-options side="end">
+        <ion-item-option color="danger">
+          <ion-icon slot="icon-only" name="trash"></ion-icon>
+        </ion-item-option>
+
+      </ion-item-options>
+
+        </ion-item-sliding>
+
+    </div>
+</ion-content>

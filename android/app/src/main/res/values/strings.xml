@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">mobileImagem</string>
+    <string name="title_activity_main">mobileImagem</string>
+    <string name="package_name">com.condsolution.image</string>
+    <string name="custom_url_scheme">com.condsolution.image</string>
+</resources>
